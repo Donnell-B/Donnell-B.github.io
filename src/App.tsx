@@ -1,6 +1,5 @@
 import moment from "moment-timezone";
 import "./App.css";
-import "react-tooltip/dist/react-tooltip.css";
 import { useEffect, useState } from "react";
 import { email, GitHub } from "./Socials/Socials";
 
