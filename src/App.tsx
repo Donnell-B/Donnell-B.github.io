@@ -2,7 +2,7 @@ import moment from "moment-timezone";
 import "./App.css";
 import "react-tooltip/dist/react-tooltip.css";
 import { useEffect, useState } from "react";
-import { GitHub, email } from "./Socials/socials";
+import { email, GitHub } from "./Socials/Socials";
 
 const socialLinks = [GitHub, email];
 
