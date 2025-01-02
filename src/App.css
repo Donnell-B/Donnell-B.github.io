@@ -4,18 +4,57 @@
   padding: 2rem;
   text-align: center;
 }
+html {
+  animation: fadeInAnimation ease 3s 1 forwards;
+}
+body {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  height: 100%;
+  background: linear-gradient(
+    -110deg,
+    #ff2a00,
+    #e73c7e,
+    #57018c,
+    #0054db,
+    #1cad8b,
+    #23d5ab
+  );
+  background-size: 400% 400%;
+  animation: gradient 60s ease infinite alternate;
+  height: 100%;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
 
 .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
 @keyframes logo-spin {
@@ -36,8 +75,65 @@
 .card {
   padding: 2em;
   border: 1px solid black;
+  box-shadow: 0px 0px 40px 1px #000000;
+  @apply bg-gradient-to-b from-cyan-600/40 to-fuchsia-900/40;
+  min-width: 320px;
+  min-height: 500px;
+  max-width: 500px;
+  @apply flex;
+  @apply flex-col;
+  @apply justify-around;
 }
 
-.read-the-docs {
-  color: #888;
+.name {
+  font-family: "Quicksand", serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 84px;
+  @apply text-slate-100;
+}
+@media screen and (max-width: 520px) {
+  .name {
+    font-size: 54px;
+  }
+}
+
+.domain {
+  @apply text-slate-100;
+  font-size: 10px;
+}
+
+.connectionIcon {
+  @apply flex-none;
+  width: 60px;
+  height: 80px;
+  @apply text-slate-200;
+  @apply transition-all;
+  @apply transition;
+}
+
+.connectionIcon:hover {
+  @apply drop-shadow-lg;
+  @apply text-white;
+  @apply duration-300;
+  @apply scale-105;
+  transform: translate(0, -2px);
+}
+
+.connections {
+  @apply flex;
+  @apply flex-none;
+  @apply flex-wrap;
+  @apply justify-center;
+  gap: 10px;
+}
+.clock {
+  font-family: "VT323", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 30px;
+  @apply text-slate-100;
+}
+.message {
+  @apply text-white;
 }

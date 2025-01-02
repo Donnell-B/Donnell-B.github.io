@@ -1,22 +1,41 @@
+import moment from "moment-timezone";
 import "./App.css";
+import "react-tooltip/dist/react-tooltip.css";
+import { useEffect, useState } from "react";
+import { GitHub, email } from "./Socials/socials";
 
-const connections = ["Github", "E-mail", ""];
-
-interface conn {
-  name: string;
-  link: string;
-  icon: string;
-}
+const socialLinks = [GitHub, email];
 
 function App() {
+  const [timeNow, updateTime] = useState(
+    moment().tz("Europe/London").format("hh:mm:ss A z")
+  );
+  useEffect(() => {
+    const interval = setInterval(() => {
+      updateTime(moment().tz("Europe/London").format("hh:mm:ss A z"));
+    }, 900);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <>
-      <div>Hello? Is this thing on?</div>
+      <div className="clock">{timeNow}</div>
       <div className="card rounded-lg">
-        <div className="name">Donnell</div>
+        <div>
+          <span className="name">DonnellB</span>
+          <span className="domain">.dev</span>
+        </div>
+        <div className="message">I'm still working on some things...</div>
         <div className="connections">
-          {connections.map((connections, index) => (
-            <span key={index}>{connections}</span>
+          {socialLinks.map((connection, index) => (
+            <a key={index} href={connection.link}>
+              <div className={"connectionIcon"}>
+                <div>{connection.icon}</div>
+
+                {connection.name}
+              </div>
+            </a>
           ))}
         </div>
       </div>
