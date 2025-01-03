@@ -7,6 +7,16 @@
 html {
   animation: fadeInAnimation ease 3s 1 forwards;
 }
+:root {
+  --main-bg-angle: random(-110, 0) deg;
+}
+
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 110deg;
+  inherits: false;
+}
+
 body {
   padding: 0;
   margin: 0;
@@ -15,7 +25,7 @@ body {
   min-width: 320px;
   height: 100%;
   background: linear-gradient(
-    -110deg,
+    var(--gradient-angle),
     #ff2a00,
     #e73c7e,
     #57018c,
@@ -24,7 +34,7 @@ body {
     #23d5ab
   );
   background-size: 400% 400%;
-  animation: gradient 60s ease infinite alternate;
+  animation: gradient 60s ease infinite alternate, bg-spin 180s linear infinite;
   height: 100%;
 }
 
@@ -57,12 +67,15 @@ body {
   transition: filter 300ms;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+@keyframes bg-spin {
+  0% {
+    --gradient-angle: -110deg;
   }
-  to {
-    transform: rotate(360deg);
+  50% {
+    --gradient-angle: 420deg;
+  }
+  100% {
+    --gradient-angle: -110deg;
   }
 }
 
@@ -83,6 +96,7 @@ body {
   @apply flex;
   @apply flex-col;
   @apply justify-around;
+  @apply backdrop-blur-md;
 }
 
 .name {
@@ -101,6 +115,8 @@ body {
 .domain {
   @apply text-slate-100;
   font-size: 10px;
+  font-family: "Quicksand", serif;
+  font-weight: 700;
 }
 
 .connectionIcon {
@@ -110,14 +126,8 @@ body {
   @apply text-slate-200;
   @apply transition-all;
   @apply transition;
-}
-
-.connectionIcon:hover {
-  @apply drop-shadow-lg;
-  @apply text-white;
-  @apply duration-300;
-  @apply scale-105;
-  transform: translate(0, -2px);
+  font-family: "Quicksand", serif;
+  font-weight: 500;
 }
 
 .connections {
@@ -132,8 +142,39 @@ body {
   font-weight: 400;
   font-style: normal;
   font-size: 30px;
-  @apply text-slate-100;
+  @apply text-white;
 }
 .message {
   @apply text-white;
+  font-family: "Quicksand", serif;
+  font-weight: 700;
+}
+
+.connectionIcon:hover {
+  @apply drop-shadow-lg;
+  @apply text-white;
+  @apply duration-300;
+  @apply scale-105;
+  transform: translate(0, -2px);
+  @apply transition;
+}
+.tooltip {
+  font-family: "Quicksand", serif;
+  font-weight: 700;
+  @apply rounded-xl !important;
+  padding: 7px !important;
+  margin: 2px !important;
+}
+
+/* Custom Icon colours  */
+.connectionIcon:hover {
+  .bi-at {
+    @apply transition-all;
+    @apply text-blue-300;
+  }
+
+  .bi-folder2-open {
+    @apply transition-all;
+    @apply text-yellow-200;
+  }
 }

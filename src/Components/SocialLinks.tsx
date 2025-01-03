@@ -1,6 +1,7 @@
-import { SMConnection } from "./Connection";
+import { ClickActions } from "./ClickActions";
+import { SocialLinkCardProps } from "./SocialLinkCardProps";
 
-export const GitHub: SMConnection = {
+export const GitHub: SocialLinkCardProps = {
   name: "GitHub",
   icon: (
     <>
@@ -13,9 +14,11 @@ export const GitHub: SMConnection = {
       </svg>
     </>
   ),
-  link: "https://www.github.com",
+  SocialLink: "https://www.github.com",
+  clickAction: ClickActions.openLink,
 };
-export const email: SMConnection = {
+const email_addr = "hello@donnellb.dev";
+export const Email: SocialLinkCardProps = {
   name: "E-mail",
   icon: (
     <>
@@ -28,11 +31,12 @@ export const email: SMConnection = {
       </svg>
     </>
   ),
-  link: "mailto:donnellburgess@outlook.com",
-  highlightColor: "email_highlights",
+  SocialLink: `mailto:${email_addr}`,
+  clickAction: ClickActions.openLink,
+  ToolTip: email_addr,
 };
 
-export const projects: SMConnection = {
+export const Projects: SocialLinkCardProps = {
   name: "Projects",
   icon: (
     <>
@@ -45,5 +49,7 @@ export const projects: SMConnection = {
       </svg>
     </>
   ),
-  link: "",
+  clickAction: ClickActions.displayAltToolTip,
+  ToolTip: "Coming Soon!",
+  AltToolTip: "...2026 maybe?",
 };
