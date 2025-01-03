@@ -1,25 +1,17 @@
-import moment from "moment-timezone";
 import "./App.css";
-import { useEffect, useState } from "react";
-import { email, GitHub } from "./Socials/Socials";
+import { SocialLinkCard } from "./Components/SocialLinkCard";
+import { Clock } from "./Components/Clock";
+import { Email, Projects, GitHub } from "./Components/SocialLinks";
 
-const socialLinks = [GitHub, email];
+// const socialLinks = [GitHub, email];
+
+const links2 = [GitHub, Email, Projects];
 
 function App() {
-  const [timeNow, updateTime] = useState(
-    moment().tz("Europe/London").format("hh:mm:ss A z")
-  );
-  useEffect(() => {
-    const interval = setInterval(() => {
-      updateTime(moment().tz("Europe/London").format("hh:mm:ss A z"));
-    }, 900);
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <>
-      <div className="clock">{timeNow}</div>
+      <Clock />
+
       <div className="card rounded-lg">
         <div>
           <span className="name">DonnellB</span>
@@ -27,14 +19,8 @@ function App() {
         </div>
         <div className="message">I'm still working on some things...</div>
         <div className="connections">
-          {socialLinks.map((connection, index) => (
-            <a key={index} href={connection.link}>
-              <div className={"connectionIcon"}>
-                <div>{connection.icon}</div>
-
-                {connection.name}
-              </div>
-            </a>
+          {links2.map((connection, index) => (
+            <SocialLinkCard {...connection} key={index} />
           ))}
         </div>
       </div>
