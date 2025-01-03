@@ -17,6 +17,7 @@ export const GitHub: SocialLinkCardProps = {
   SocialLink: "https://www.github.com",
   clickAction: ClickActions.openLink,
 };
+const email_addr = "hello@donnellb.dev";
 export const Email: SocialLinkCardProps = {
   name: "E-mail",
   icon: (
@@ -30,8 +31,9 @@ export const Email: SocialLinkCardProps = {
       </svg>
     </>
   ),
-  SocialLink: "mailto:donnellburgess@outlook.com",
+  SocialLink: `mailto:${email_addr}`,
   clickAction: ClickActions.openLink,
+  ToolTip: email_addr,
 };
 
 export const Projects: SocialLinkCardProps = {
@@ -47,6 +49,7 @@ export const Projects: SocialLinkCardProps = {
       </svg>
     </>
   ),
-  clickAction: ClickActions.None,
+  clickAction: ClickActions.displayAltToolTip,
   ToolTip: "Coming Soon!",
+  AltToolTip: "...2026 maybe?",
 };

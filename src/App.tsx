@@ -3,9 +3,7 @@ import { SocialLinkCard } from "./Components/SocialLinkCard";
 import { Clock } from "./Components/Clock";
 import { Email, Projects, GitHub } from "./Components/SocialLinks";
 
-// const socialLinks = [GitHub, email];
-
-const links2 = [GitHub, Email, Projects];
+const SocialLinks = [GitHub, Email, Projects];
 
 function App() {
   return (
@@ -19,7 +17,7 @@ function App() {
         </div>
         <div className="message">I'm still working on some things...</div>
         <div className="connections">
-          {links2.map((connection, index) => (
+          {SocialLinks.map((connection, index) => (
             <SocialLinkCard {...connection} key={index} />
           ))}
         </div>

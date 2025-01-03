@@ -17,16 +17,23 @@ export function SocialLinkCard({
   clipboardCopyText,
   SocialLink,
   icon,
+  AltToolTip,
 }: SocialLinkCardProps) {
   const [currentToolTipText, updateToolTipText] = useState(ToolTip);
 
-  function copyAndChangeToolTip(altText: string, textToCopy: string) {
+  function changeToolTip(altText: string) {
+    if (altText == undefined) return;
     if (ToolTip == undefined) return;
     updateToolTipText(altText);
-    copyLink(textToCopy);
     setTimeout(() => {
       updateToolTipText(ToolTip);
     }, 2000);
+  }
+
+  function copyAndChangeToolTip(altText: string, textToCopy: string) {
+    if (ToolTip == undefined) return;
+    copyLink(textToCopy);
+    changeToolTip(altText);
   }
 
   function generateToolTip() {
@@ -49,6 +56,8 @@ export function SocialLinkCard({
               return copyAndChangeToolTip("Copied!", clipboardCopyText ?? "");
             case ClickActions.openLink:
               return openLink(SocialLink ?? ".");
+            case ClickActions.displayAltToolTip:
+              return changeToolTip(AltToolTip ?? "");
 
             default:
             case ClickActions.None:

@@ -1,5 +1,6 @@
 export enum ClickActions {
-    openLink,
-    copyTextToClipboard,
-    None,
+  openLink,
+  copyTextToClipboard,
+  displayAltToolTip,
+  None,
 }
